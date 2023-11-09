@@ -48,6 +48,7 @@ public class KalkulatorTest {
         Kalkulator kalkulator = new Kalkulator();
 
         /// When
+        Integer wynik = kalkulator.dodaj(dane);
 
      ////nie wiem
         assertEquals(liczby,wynik);
@@ -72,6 +73,22 @@ public class KalkulatorTest {
 
             assertEquals(liczby, wynik);
         }
+        ////Then
+        assertEquals(liczby, wynik);
+
+
+    }
+    @Test
+    void jezelibedaInneZnaki(){
+
+        /// Given
+        String dane = "//;\n1;2";
+        Integer liczby = 03;
+        Kalkulator kalkulator = new Kalkulator();
+
+        /// When
+
+       Integer wynik = kalkulator.dodaj(dane);
         ////Then
         assertEquals(liczby, wynik);
 
