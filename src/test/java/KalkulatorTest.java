@@ -1,36 +1,85 @@
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class KalkulatorTest {
+
+
     @Test
-    void simpleTest() {
-        String myString1 = "1";
-        String myString2 = "2";
-        String myString3 = "3";
-        String myString4 = "4";
-        String myString5 = "5";
-        String myString6 = "6";
-        String myString7 = "7";
-        String myString8 = "8";
-        String myString9 = "9";
+    void jezeliBedziePusteZwracaZero(){
 
+        /// Given
+        String dane = "";
+        Integer liczby = 0;
+        Kalkulator kalkulator = new Kalkulator();
 
-        int parNum1 = Integer.valueOf(myString1);
-        int parNum2 = Integer.valueOf(myString2);
-        int parNum3 = Integer.valueOf(myString3);
-        int parNum4 = Integer.valueOf(myString4);
-        int parNum5 = Integer.valueOf(myString5);
-        int parNum6 = Integer.valueOf(myString6);
-        int parNum7 = Integer.valueOf(myString7);
-        int parNum8 = Integer.valueOf(myString8);
-        int parNum9 = Integer.valueOf(myString9);
+        /// When
 
+        Integer wynik = kalkulator.dodaj(dane);
 
-        int result = parNum1 + parNum2;
+        ////Then
+        assertEquals(liczby, wynik);
 
-        Assertions.assertEquals(3, result);//tescik
+    }
+    @Test
+    void jeeliDamyLIczbyPOPrzecinku(){
 
+        /// Given
+        String dane = "1,2,4,7,3,12,4";
+        Integer liczby = 33;
+        Kalkulator kalkulator = new Kalkulator();
+
+        /// When
+
+        Integer wynik = kalkulator.dodaj(dane);
+
+        ////Then
+        assertEquals(liczby, wynik);
+
+    }
+    @Test
+    void jezeliDamyEnterPomiedzy(){
+
+        /// Given
+        String dane = "1\n2,3";
+        Integer liczby = 6;
+        Kalkulator kalkulator = new Kalkulator();
+
+        /// When
+
+     ////nie wiem
+        assertEquals(liczby,wynik);
+        ////Then
+        assertEquals(liczby,wynik);
+
+    }
+    @Test
+    void jezeliBedzieNullZwracaZero(){
+
+        /// Given
+        String dane = "";
+        Integer liczby = 0;
+        Kalkulator kalkulator = new Kalkulator();
+        Integer wynik = null;
+        /// When
+        try{
+            liczby=null;
+            fail();
+        }
+        catch (NullPointerException exception) {
+
+            assertEquals(liczby, wynik);
+        }
+        ////Then
+        assertEquals(liczby, wynik);
 
 
     }
+
+    private void fail() {
+    }
+
+
 }
