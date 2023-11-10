@@ -16,39 +16,38 @@ public class Kalkulator {
 
 
             public Integer dodaj(String dane) {
-                // Nadanie wartosci
-
-                String separator = ",";
-                String numbers = dane;
-                Integer suma = 0;
-
-                // usuwanie zbednych znakow
-                String[] liczby1 = dane.split(",|\n");//lub String[] liczby1 = dane.split(",|\n;:./");
-
-                String[] liczby3 = dane.split(";");
-                String[] liczby4 = dane.split(".");
-                // Sprawdzenie czy cos jest
-                if (dane.isEmpty()) {
+                if(dane == null || dane.isEmpty()){
                     return 0;
                 }
 
+                String separator = ",|\n";
+                String numbers = dane;
+                String nowySeparator="";
+
+                String kiedyNaMinusie = "liczby ujemne nie dozwolone"; //new
 
 
-                for (int i = 0; i < liczby1.length; i++) {
-                    String liczba = liczby1[i];
+                if (dane.startsWith("//")) {
+                    numbers = dane.substring(dane.indexOf("\n")+1);
+                    nowySeparator = dane.substring(2, dane.indexOf("\n"));
+                }
+                separator = separator + "|" + separator;
+                String[] danePodzielone = numbers.split(separator);
+
+                Integer suma = 0;
+                for (int i = 0; i < danePodzielone.length; i++) {
+                    String liczba = danePodzielone[i];
                     suma += Integer.parseInt(liczba);
                 }
 
 
 
-                    // Sprawdzenie czy zaczyna sie od znaku nieliczbowego
-                    if (dane.startsWith("//")) {
-                        separator = dane.substring(2, 3);
-                        //przejscie do nowej linijkki
-                        numbers = dane.substring(dane.indexOf('\n') + 1);
-                    }
 
 
+                if (dane.startsWith("-")) {                     ////new
+                    return Integer.valueOf(kiedyNaMinusie, Integer.parseInt(dane));
+
+                }
 
                 return suma;
             }
