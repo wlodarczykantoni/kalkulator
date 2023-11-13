@@ -23,6 +23,7 @@ public class Kalkulator {
                 String separator = ",|\n";
                 String numbers = dane;
                 String nowySeparator="";
+                String nowySeparator2 ="";
                 String zaDuzo="Liczba niemoze byc wieksza niz 1000";
 
                 String kiedyNaMinusie = "liczby ujemne nie dozwolone"; //new
@@ -32,7 +33,8 @@ public class Kalkulator {
                     numbers = dane.substring(dane.indexOf("\n")+1);
                     nowySeparator = dane.substring(2, dane.indexOf("\n"));
                 }
-                separator = separator + "|" + separator;
+
+                separator = separator + "|" + nowySeparator;
                 String[] danePodzielone = numbers.split(separator);
 
                 Integer suma = 0;
@@ -49,11 +51,42 @@ public class Kalkulator {
                     return Integer.valueOf(kiedyNaMinusie, Integer.parseInt(dane));
 
                 }
-            int liczba = Integer.parseInt(dane);
-                if (liczba<= 1000) {
-                    return Integer.valueOf(zaDuzo);
+
+
+                if (dane.startsWith("//") || dane.contains("[***]")) {
+                    numbers = dane.substring(dane.indexOf("\n")+1);
+                    nowySeparator2 = dane.substring(2, dane.indexOf("\n"));
+                    if (dane.startsWith("//")) {
+                        dane = dane.substring(dane.indexOf("\n") + 1);
+                    }
+
+                    if (dane.contains("[***]")) {
+                        dane = dane.substring(dane.indexOf("[***]") + 5);
+                    }
+
+                    if (dane.contains("\n")) {
+                        dane = dane.substring(dane.indexOf("\n") + 2);
+                    }
+
+                    if (dane.contains("***")) {
+                        dane = dane.substring(dane.indexOf("***") + 3);
+                    }
+
+
+
+                }
+                separator = separator + "|" + nowySeparator2;
+                String[] danePodzielone2 = numbers.split(separator);
+                Integer suma2 = 0;
+                for (int i = 0; i < danePodzielone2.length; i++) {
+                    String liczba = danePodzielone2[i];
+                    suma2 += Integer.parseInt(liczba);
+                    return suma2;
+
                 }
 
+
                 return suma;
+
             }
         }
