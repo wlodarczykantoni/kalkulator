@@ -23,6 +23,7 @@ public class Kalkulator {
                 String separator = ",|\n";
                 String numbers = dane;
                 String nowySeparator="";
+                String zaDuzo="Liczba niemoze byc wieksza niz 1000";
 
                 String kiedyNaMinusie = "liczby ujemne nie dozwolone"; //new
 
@@ -47,6 +48,10 @@ public class Kalkulator {
                 if (dane.startsWith("-")) {                     ////new
                     return Integer.valueOf(kiedyNaMinusie, Integer.parseInt(dane));
 
+                }
+            int liczba = Integer.parseInt(dane);
+                if (liczba<= 1000) {
+                    return Integer.valueOf(zaDuzo);
                 }
 
                 return suma;

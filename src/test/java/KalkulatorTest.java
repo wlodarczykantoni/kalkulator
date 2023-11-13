@@ -127,6 +127,18 @@ public class KalkulatorTest {
     }
 
 
+   @Test
+    void jezeliBedzieZaDuzo() {
+        /// Given
+        String dane = "1001";
+        String kiedyZaDuzo = "powyzej 1000 nie wolno";
+        Kalkulator kalkulator = new Kalkulator();
 
+        /// When
+        Integer wynik = kalkulator.dodaj(dane);
+
+        //// Then
+        assertEquals(Integer.valueOf(kiedyZaDuzo), wynik);
+    }
 
 }
