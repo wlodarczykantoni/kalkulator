@@ -131,7 +131,7 @@ public class KalkulatorTest {
     void jezeliBedzieZaDuzo() {
         /// Given
         String dane = "1001";
-        String kiedyZaDuzo = "powyzej 1000 nie wolno";
+       String kiedyZaDuzo = "powyzej 1000 nie wolno";
         Kalkulator kalkulator = new Kalkulator();
 
         /// When
@@ -139,6 +139,19 @@ public class KalkulatorTest {
 
         //// Then
         assertEquals(Integer.valueOf(kiedyZaDuzo), wynik);
+    }
+    @Test
+    void jezeliBedzieŁancycgZnakow() {
+        /// Given
+        String dane = " //[***]\\n1***2***3";
+        Integer oczekiwanyWynik = 6;
+        Kalkulator kalkulator = new Kalkulator();
+
+        /// When
+        Integer wynik = kalkulator.dodaj(dane);
+
+        //// Then
+        assertEquals(Integer.valueOf(oczekiwanyWynik), wynik);
     }
 
 }
