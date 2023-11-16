@@ -41,5 +41,7 @@ public class TortUrodzinowy {
     }
 
 
-
+    public List<Integer> getListaSwieczek() {
+        return getListaSwieczek();
+    }
 }
