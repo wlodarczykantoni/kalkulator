@@ -39,4 +39,7 @@ public class TortUrodzinowy {
 
         System.out.println("Ilosc wystepien najwiekszej liczby " + licznikNajwiekszych);
     }
+
+
+
 }
