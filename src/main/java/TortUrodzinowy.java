@@ -1,47 +1,39 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class TortUrodzinowy {
+    private List<Integer> listaSwieczek;
+    private int najwieksza;
+    private int licznikNajwiekszych;
 
-    public static void main(String[] args) {
-        List<Integer> listaSwieczek = new ArrayList<>();
-        listaSwieczek.add(2);
-        listaSwieczek.add(4);
-        listaSwieczek.add(6);
-        listaSwieczek.add(9);
-        listaSwieczek.add(6);
-        listaSwieczek.add(6);
-        listaSwieczek.add(7);
-        listaSwieczek.add(1);
-        listaSwieczek.add(2);
-        listaSwieczek.add(6);
+    public TortUrodzinowy(List<Integer> listaSwieczek) {
+        this.listaSwieczek = listaSwieczek;
+        this.najwieksza = Integer.MIN_VALUE;
+        this.licznikNajwiekszych = 0;
+    }
 
-        // szukanie najwiekszej
-        int najwieksza = Integer.MIN_VALUE;
+    public List<Integer> getListaSwieczek() {
+        return listaSwieczek;
+    }
 
-        for (int i = 0; i < listaSwieczek.size(); i++) {
-            int liczba = listaSwieczek.get(i);
+    public void znajdzNajwiekszaILicznik() {
+        najwieksza = Integer.MIN_VALUE; // Zainicjowanie na początku
+        licznikNajwiekszych = 0; // Zainicjowanie na początku
 
+        for (int liczba : listaSwieczek) {
             if (liczba > najwieksza) {
                 najwieksza = liczba;
-            }
-        }
-
-        System.out.println("Najwieksza liczba w liscie " + najwieksza);
-
-        // szukanie najwiekszej i licenie ileich jest
-        int licznikNajwiekszych = 0;
-        for (int liczba : listaSwieczek) {
-            if (liczba == najwieksza) {
+                licznikNajwiekszych = 1; // Resetuj licznik
+            } else if (liczba == najwieksza) {
                 licznikNajwiekszych++;
             }
         }
-
-        System.out.println("Ilosc wystepien najwiekszej liczby " + licznikNajwiekszych);
     }
 
+    public int getLicznikNajwiekszych() {
+        return licznikNajwiekszych;
+    }
 
-    public List<Integer> getListaSwieczek() {
-        return getListaSwieczek();
+    public int getNajwieksza() {
+        return najwieksza;
     }
 }
